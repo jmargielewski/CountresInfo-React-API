@@ -1,0 +1,35 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "Weather application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmargielewski/Weather-Rest-API.git"
+  },
+  "author": "Kuba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmargielewski/Weather-Rest-API/issues"
+  },
+  "homepage": "https://github.com/jmargielewski/Weather-Rest-API#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.5",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0"
+  }
+}
