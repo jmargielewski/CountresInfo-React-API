@@ -1,5 +1,5 @@
 module.exports = {
-    entry: ["./js/app.jsx", "./sass/main.scss"],
+    entry: ["whatwg-fetch", "./sass/main.scss", "./js/app.jsx"],
     output: {
         filename: "out.js"
     },
@@ -11,7 +11,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015', 'react']
+                    presets: ['es2015', 'stage-2', 'react']
                 }
             },
             {
