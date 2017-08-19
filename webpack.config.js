@@ -1,7 +1,10 @@
+const path = require("path");
+
 module.exports = {
-    entry: ["whatwg-fetch", "./sass/main.scss", "./js/app.jsx"],
+    entry: ["./sass/main.scss", "whatwg-fetch", "./js/app.jsx"],
     output: {
-        filename: "out.js"
+        path : path.resolve("js"),
+        filename: "out.js",
     },
     watch: true,
     module: {
