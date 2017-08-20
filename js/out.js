@@ -9432,7 +9432,7 @@ exports = module.exports = __webpack_require__(82)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  font-family: 'Indie Flower', cursive; }\n\nbody {\n  height: 100%;\n  background: #2980b9;\n  background: -webkit-linear-gradient(bottom, #2980b9, #2c3e50);\n  background: -o-linear-gradient(bottom, #2980b9, #2c3e50);\n  background: linear-gradient(to top, #2980b9, #2c3e50); }\n\n.wrap {\n  margin: 0 auto;\n  width: 1000px; }\n\nheader .headerLogo {\n  color: #FFF;\n  text-align: center;\n  font-size: 50px;\n  letter-spacing: 6px;\n  padding: 30px; }\n\nmain {\n  text-align: center; }\n  main li {\n    list-style-type: none; }\n\nfooter {\n  line-height: 40px;\n  text-align: center;\n  text-decoration: underline; }\n", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  font-family: 'Open Sans', sans-serif; }\n\nbody {\n  height: 100%;\n  background: #2980b9;\n  background: -webkit-linear-gradient(bottom, #2980b9, #2c3e50);\n  background: -o-linear-gradient(bottom, #2980b9, #2c3e50);\n  background: linear-gradient(to top, #011A27, #063852); }\n\n.wrap {\n  margin: 0 auto;\n  width: 1000px; }\n\nheader .headerLogo {\n  color: #FFF;\n  text-align: center;\n  font-size: 50px;\n  letter-spacing: 6px;\n  padding: 30px;\n  text-shadow: 7px 7px 30px #000000; }\n\nmain {\n  text-align: center; }\n\n.wrapCountrySerch {\n  padding: 15px; }\n  .wrapCountrySerch input {\n    height: 40px;\n    width: 350px;\n    border: none;\n    padding-left: 10px;\n    box-shadow: 8px 8px 8px #000; }\n\n.countryInfo {\n  padding: 25px; }\n\n.countryInfo ul {\n  list-style-type: none;\n  color: #F1F3CE; }\n  .countryInfo ul li {\n    min-height: 30px;\n    font-size: 17px;\n    text-shadow: 7px 7px 30px #000000; }\n    .countryInfo ul li:first-of-type {\n      color: #F1F3CE;\n      font-size: 30px;\n      text-transform: uppercase;\n      letter-spacing: 3px;\n      font-weight: bold; }\n    .countryInfo ul li img {\n      height: 215px;\n      width: 380px; }\n\nfooter {\n  color: #FFFFFF;\n  line-height: 40px;\n  text-align: center;\n  text-decoration: underline; }\n", ""]);
 
 // exports
 
@@ -10484,7 +10484,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     _react2.default.createElement(
                         'h1',
                         { className: 'headerLogo' },
-                        'Country Info'
+                        'COUNTRY INFO'
                     )
                 );
             }
@@ -10510,44 +10510,42 @@ document.addEventListener('DOMContentLoaded', function () {
             return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = Main.__proto__ || Object.getPrototypeOf(Main)).call.apply(_ref, [this].concat(args))), _this2), _this2.state = {
                 errorApi: '',
                 allDataApi: []
+                // componentDidMount() {
+                //     fetch(`https://restcountries.eu/rest/v2/all`)
+                //     .then( response => response.json() )
+                //     .then( data => {
+                //         if( !data ){
+                //             this.setState({
+                //                 errorApi : "Nie odnaleziono danych",
+                //             });
+                //         } else {
+                //             const allCountries = data.map(( country ) => {
+                //                 return {
+                //                     country : [
+                //                         {
+                //                             name: country.name,
+                //                             capital : country.capital,
+                //                             region : country.region,
+                //                             population : country.population,
+                //                             area : country.area,
+                //                             timezones : country.timezones,
+                //                             currencies : country.currencies,
+                //                             flag : country.flag,
+                //                         }
+                //                     ]
+                //                 }
+                //             });
+                //             this.setState({
+                //                 allDataApi: allCountries,
+                //             });
+                //             console.log(this.state.allDataApi);
+                //         }
+                //     });
+                // }
             }, _temp), _possibleConstructorReturn(_this2, _ret);
         }
 
         _createClass(Main, [{
-            key: 'componentDidMount',
-            value: function componentDidMount() {
-                var _this3 = this;
-
-                fetch('https://restcountries.eu/rest/v2/all').then(function (response) {
-                    return response.json();
-                }).then(function (data) {
-                    if (!data) {
-                        _this3.setState({
-                            errorApi: "Nie odnaleziono danych"
-                        });
-                    } else {
-                        var allCountries = data.map(function (country) {
-                            return {
-                                country: [{
-                                    name: country.name,
-                                    capital: country.capital,
-                                    region: country.region,
-                                    population: country.population,
-                                    area: country.area,
-                                    timezones: country.timezones,
-                                    currencies: country.currencies,
-                                    flag: country.flag
-                                }]
-                            };
-                        });
-                        _this3.setState({
-                            allDataApi: allCountries
-                        });
-                        console.log(_this3.state.allDataApi[0].country[0].area, _this3.state.allDataApi[0].country[0].timezones, _this3.state.allDataApi[0].country[0].currencies, _this3.state.allDataApi[0].country[0].flag);
-                    }
-                });
-            }
-        }, {
             key: 'render',
             value: function render() {
                 return _react2.default.createElement(
@@ -10555,17 +10553,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     null,
                     _react2.default.createElement(
                         'div',
-                        null,
-                        _react2.default.createElement('input', { type: 'text' }),
-                        _react2.default.createElement(
-                            'button',
-                            null,
-                            'serch'
-                        )
+                        { className: 'wrapCountrySerch' },
+                        _react2.default.createElement('input', {
+                            type: 'text',
+                            placeholder: 'search'
+                        })
                     ),
                     _react2.default.createElement(
                         'div',
-                        null,
+                        { className: 'countryInfo' },
                         _react2.default.createElement(
                             'ul',
                             null,
@@ -10577,32 +10573,32 @@ document.addEventListener('DOMContentLoaded', function () {
                             _react2.default.createElement(
                                 'li',
                                 null,
-                                'Kabul'
+                                'Capital city: Kabul'
                             ),
                             _react2.default.createElement(
                                 'li',
                                 null,
-                                'Asia'
+                                'Region: Asia'
                             ),
                             _react2.default.createElement(
                                 'li',
                                 null,
-                                '27657145'
+                                'Area: 27657145'
                             ),
                             _react2.default.createElement(
                                 'li',
                                 null,
-                                '652230'
+                                'Population: 652230'
                             ),
                             _react2.default.createElement(
                                 'li',
                                 null,
-                                '"UTC+04:30"'
+                                'Time Zones: "UTC+04:30"'
                             ),
                             _react2.default.createElement(
                                 'li',
                                 null,
-                                ' AFN Afghan afghani'
+                                'Currencies: AFN Afghan afghani'
                             ),
                             _react2.default.createElement(
                                 'li',
