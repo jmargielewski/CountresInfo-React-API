@@ -10509,43 +10509,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
             return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = Main.__proto__ || Object.getPrototypeOf(Main)).call.apply(_ref, [this].concat(args))), _this2), _this2.state = {
                 errorApi: '',
-                allDataApi: []
-                // componentDidMount() {
-                //     fetch(`https://restcountries.eu/rest/v2/all`)
-                //     .then( response => response.json() )
-                //     .then( data => {
-                //         if( !data ){
-                //             this.setState({
-                //                 errorApi : "Nie odnaleziono danych",
-                //             });
-                //         } else {
-                //             const allCountries = data.map(( country ) => {
-                //                 return {
-                //                     country : [
-                //                         {
-                //                             name: country.name,
-                //                             capital : country.capital,
-                //                             region : country.region,
-                //                             population : country.population,
-                //                             area : country.area,
-                //                             timezones : country.timezones,
-                //                             currencies : country.currencies,
-                //                             flag : country.flag,
-                //                         }
-                //                     ]
-                //                 }
-                //             });
-                //             this.setState({
-                //                 allDataApi: allCountries,
-                //             });
-                //             console.log(this.state.allDataApi);
-                //         }
-                //     });
-                // }
+                allDataApi: [],
+                inputValue: ''
+            }, _this2.handleCountryNameChange = function (event) {
+                _this2.setState({
+                    inputValue: event.target.value
+                });
             }, _temp), _possibleConstructorReturn(_this2, _ret);
         }
 
         _createClass(Main, [{
+            key: 'componentDidMount',
+            value: function componentDidMount() {
+                var _this3 = this;
+
+                fetch('https://restcountries.eu/rest/v2/all').then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    if (!data) {
+                        _this3.setState({
+                            errorApi: "Nie odnaleziono danych"
+                        });
+                    } else {
+                        var allCountries = data.map(function (country) {
+                            return {
+                                country: [{
+                                    name: country.name,
+                                    capital: country.capital,
+                                    region: country.region,
+                                    population: country.population,
+                                    area: country.area,
+                                    timezones: country.timezones,
+                                    currencies: country.currencies,
+                                    flag: country.flag
+                                }]
+                            };
+                        });
+                        _this3.setState({
+                            allDataApi: allCountries
+                        });
+                    }
+                });
+            }
+        }, {
             key: 'render',
             value: function render() {
                 return _react2.default.createElement(
@@ -10556,7 +10562,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         { className: 'wrapCountrySerch' },
                         _react2.default.createElement('input', {
                             type: 'text',
-                            placeholder: 'search'
+                            value: this.state.inputValue,
+                            placeholder: 'search...',
+                            onChange: 'this.handleCountryNameChange'
                         })
                     ),
                     _react2.default.createElement(

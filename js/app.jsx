@@ -17,46 +17,53 @@ document.addEventListener('DOMContentLoaded', function(){
         state = {
             errorApi : '',
             allDataApi : [],
+            inputValue : ''
         }
-        // componentDidMount() {
-        //     fetch(`https://restcountries.eu/rest/v2/all`)
-        //     .then( response => response.json() )
-        //     .then( data => {
-        //         if( !data ){
-        //             this.setState({
-        //                 errorApi : "Nie odnaleziono danych",
-        //             });
-        //         } else {
-        //             const allCountries = data.map(( country ) => {
-        //                 return {
-        //                     country : [
-        //                         {
-        //                             name: country.name,
-        //                             capital : country.capital,
-        //                             region : country.region,
-        //                             population : country.population,
-        //                             area : country.area,
-        //                             timezones : country.timezones,
-        //                             currencies : country.currencies,
-        //                             flag : country.flag,
-        //                         }
-        //                     ]
-        //                 }
-        //             });
-        //             this.setState({
-        //                 allDataApi: allCountries,
-        //             });
-        //             console.log(this.state.allDataApi);
-        //         }
-        //     });
-        // }
+        componentDidMount() {
+            fetch(`https://restcountries.eu/rest/v2/all`)
+            .then( response => response.json() )
+            .then( data => {
+                if( !data ){
+                    this.setState({
+                        errorApi : "Nie odnaleziono danych",
+                    });
+                } else {
+                    const allCountries = data.map(( country ) => {
+                        return {
+                            country : [
+                                {
+                                    name: country.name,
+                                    capital : country.capital,
+                                    region : country.region,
+                                    population : country.population,
+                                    area : country.area,
+                                    timezones : country.timezones,
+                                    currencies : country.currencies,
+                                    flag : country.flag,
+                                }
+                            ]
+                        }
+                    });
+                    this.setState({
+                        allDataApi: allCountries,
+                    });
+                }
+            });
+        }
+        handleCountryNameChange = ( event ) => {
+            this.setState({
+                inputValue : event.target.value,
+            });
+        }
         render(){
             return (
                 <main>
                     <div className='wrapCountrySerch'>
                         <input
                             type='text'
-                            placeholder="search"
+                            value={this.state.inputValue}
+                            placeholder="search..."
+                            onChange='this.handleCountryNameChange'
                         />
                     </div>
                     <div className='countryInfo'>
