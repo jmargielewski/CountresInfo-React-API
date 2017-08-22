@@ -9432,7 +9432,7 @@ exports = module.exports = __webpack_require__(82)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  font-family: 'Open Sans', sans-serif; }\n\nbody {\n  height: 100%;\n  background: #2980b9;\n  background: -webkit-linear-gradient(bottom, #2980b9, #2c3e50);\n  background: -o-linear-gradient(bottom, #2980b9, #2c3e50);\n  background: linear-gradient(to top, #011A27, #063852); }\n\n.wrap {\n  margin: 0 auto;\n  width: 1000px; }\n\nheader .headerLogo {\n  color: #FFF;\n  text-align: center;\n  font-size: 50px;\n  letter-spacing: 6px;\n  padding: 30px;\n  text-shadow: 7px 7px 30px #000000; }\n\nmain {\n  text-align: center; }\n\n.wrapCountrySerch {\n  padding: 15px; }\n  .wrapCountrySerch input {\n    height: 40px;\n    width: 350px;\n    border: none;\n    padding-left: 10px;\n    box-shadow: 8px 8px 8px #000; }\n\n.countryInfo {\n  padding: 25px; }\n\n.countryInfo ul {\n  list-style-type: none;\n  color: #F1F3CE; }\n  .countryInfo ul li {\n    min-height: 30px;\n    font-size: 17px;\n    text-shadow: 7px 7px 30px #000000; }\n    .countryInfo ul li:first-of-type {\n      color: #F1F3CE;\n      font-size: 30px;\n      text-transform: uppercase;\n      letter-spacing: 3px;\n      font-weight: bold; }\n    .countryInfo ul li img {\n      height: 215px;\n      width: 380px; }\n\nfooter {\n  color: #FFFFFF;\n  line-height: 40px;\n  text-align: center;\n  text-decoration: underline; }\n", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  font-family: 'Open Sans', sans-serif; }\n\nbody {\n  height: 100%;\n  background: #063852;\n  background: -webkit-linear-gradient(bottom, #011A27, #063852);\n  background: -o-linear-gradient(bottom, #011A27, #063852);\n  background: linear-gradient(to top, #011A27, #063852); }\n\n.wrap {\n  margin: 0 auto;\n  width: 1000px; }\n\nheader .headerLogo {\n  color: #FFFFFF;\n  text-align: center;\n  font-size: 50px;\n  letter-spacing: 6px;\n  padding: 30px;\n  text-shadow: 7px 7px 30px #000000; }\n\nmain {\n  text-align: center;\n  min-height: 558px; }\n\n.wrapCountrySerch {\n  padding: 15px; }\n  .wrapCountrySerch input {\n    height: 40px;\n    width: 350px;\n    border: none;\n    padding-left: 10px;\n    box-shadow: 8px 8px 8px #000000; }\n  .wrapCountrySerch label {\n    display: block;\n    color: #F1F3CE;\n    font-size: 18px;\n    padding-bottom: 8px; }\n\n.countryInfo {\n  padding: 25px; }\n\n.countryInfo ul {\n  list-style-type: none;\n  color: #F1F3CE; }\n  .countryInfo ul li {\n    min-height: 30px;\n    font-size: 17px;\n    text-shadow: 7px 7px 30px #000000; }\n    .countryInfo ul li:first-of-type {\n      color: #F1F3CE;\n      font-size: 30px;\n      text-transform: uppercase;\n      letter-spacing: 3px;\n      font-weight: bold; }\n    .countryInfo ul li img {\n      height: 215px;\n      width: 380px; }\n\nfooter {\n  color: #FFFFFF;\n  line-height: 40px;\n  text-align: center;\n  text-decoration: underline; }\n", ""]);
 
 // exports
 
@@ -10484,7 +10484,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     _react2.default.createElement(
                         'h1',
                         { className: 'headerLogo' },
-                        'COUNTRY INFO'
+                        'Countries || Infoplease'
                     )
                 );
             }
@@ -10510,10 +10510,81 @@ document.addEventListener('DOMContentLoaded', function () {
             return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = Main.__proto__ || Object.getPrototypeOf(Main)).call.apply(_ref, [this].concat(args))), _this2), _this2.state = {
                 errorApi: '',
                 allDataApi: [],
-                inputValue: ''
+                inputValue: '',
+                countryInfo: ''
             }, _this2.handleCountryNameChange = function (event) {
+
+                var userCountry = event.target.value;
+
                 _this2.setState({
-                    inputValue: event.target.value
+                    inputValue: userCountry
+                });
+
+                var countryInfo = _this2.state.allDataApi.map(function (listCountry) {
+                    console.log(listCountry.country[0].name);
+                    // poprawić mapowanie całej tablicy przy każdym changeu
+                    // poprawić walutę
+                    // walidacja wielkości pierwszej litery
+                    if (listCountry.country[0].name === userCountry) {
+                        var countryIInfo = _react2.default.createElement(
+                            'ul',
+                            null,
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                listCountry.country[0].name
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Capital city: ',
+                                listCountry.country[0].capital
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Region: ',
+                                listCountry.country[0].region
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Population: ',
+                                listCountry.country[0].population
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Area: ',
+                                listCountry.country[0].area,
+                                ' km',
+                                _react2.default.createElement(
+                                    'sup',
+                                    null,
+                                    '2'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Time Zones: ',
+                                listCountry.country[0].timezones
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Currencies: AFN Afghan afghani'
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                _react2.default.createElement('img', { src: listCountry.country[0].flag })
+                            )
+                        );
+                        _this2.setState({
+                            countryInfo: countryIInfo
+                        });
+                    }
                 });
             }, _temp), _possibleConstructorReturn(_this2, _ret);
         }
@@ -10528,7 +10599,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }).then(function (data) {
                     if (!data) {
                         _this3.setState({
-                            errorApi: "Nie odnaleziono danych"
+                            errorApi: 'Nie odnaleziono danych'
                         });
                     } else {
                         var allCountries = data.map(function (country) {
@@ -10540,7 +10611,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     population: country.population,
                                     area: country.area,
                                     timezones: country.timezones,
-                                    currencies: country.currencies,
+                                    currencies: country.currencies[0],
                                     flag: country.flag
                                 }]
                             };
@@ -10548,6 +10619,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         _this3.setState({
                             allDataApi: allCountries
                         });
+                        console.log(allCountries);
                     }
                 });
             }
@@ -10560,61 +10632,22 @@ document.addEventListener('DOMContentLoaded', function () {
                     _react2.default.createElement(
                         'div',
                         { className: 'wrapCountrySerch' },
+                        _react2.default.createElement(
+                            'label',
+                            null,
+                            'Enter Country name:'
+                        ),
                         _react2.default.createElement('input', {
                             type: 'text',
                             value: this.state.inputValue,
-                            placeholder: 'search...',
-                            onChange: 'this.handleCountryNameChange'
+                            placeholder: 'Ex: Afghanistan, Yemen, Italy',
+                            onChange: this.handleCountryNameChange
                         })
                     ),
                     _react2.default.createElement(
                         'div',
                         { className: 'countryInfo' },
-                        _react2.default.createElement(
-                            'ul',
-                            null,
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                'Afghanistan'
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                'Capital city: Kabul'
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                'Region: Asia'
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                'Area: 27657145'
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                'Population: 652230'
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                'Time Zones: "UTC+04:30"'
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                'Currencies: AFN Afghan afghani'
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                ' ',
-                                _react2.default.createElement('img', { src: 'https://restcountries.eu/data/afg.svg' })
-                            )
-                        )
+                        this.state.countryInfo
                     )
                 );
             }

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){
         render(){
             return (
                 <header>
-                    <h1 className='headerLogo'>COUNTRY INFO</h1>
+                    <h1 className='headerLogo'>Countries || Infoplease</h1>
                 </header>
             )
         }
@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', function(){
         state = {
             errorApi : '',
             allDataApi : [],
-            inputValue : ''
+            inputValue : '',
+            countryInfo : '',
         }
         componentDidMount() {
             fetch(`https://restcountries.eu/rest/v2/all`)
@@ -25,20 +26,20 @@ document.addEventListener('DOMContentLoaded', function(){
             .then( data => {
                 if( !data ){
                     this.setState({
-                        errorApi : "Nie odnaleziono danych",
+                        errorApi : 'Nie odnaleziono danych',
                     });
                 } else {
                     const allCountries = data.map(( country ) => {
                         return {
                             country : [
                                 {
-                                    name: country.name,
+                                    name : country.name,
                                     capital : country.capital,
                                     region : country.region,
                                     population : country.population,
                                     area : country.area,
                                     timezones : country.timezones,
-                                    currencies : country.currencies,
+                                    currencies : country.currencies[0],
                                     flag : country.flag,
                                 }
                             ]
@@ -47,36 +48,54 @@ document.addEventListener('DOMContentLoaded', function(){
                     this.setState({
                         allDataApi: allCountries,
                     });
+                    console.log(allCountries);
                 }
             });
         }
         handleCountryNameChange = ( event ) => {
+
+            const userCountry = event.target.value;
+
             this.setState({
-                inputValue : event.target.value,
+                inputValue : userCountry,
             });
+
+            const countryInfo = this.state.allDataApi.map( ( listCountry ) => {
+                console.log(listCountry.country[0].name);
+                // poprawić mapowanie całej tablicy przy każdym changeu
+                // poprawić walutę
+                // walidacja wielkości pierwszej litery
+                if (listCountry.country[0].name === userCountry){
+                    const countryIInfo = <ul>
+                        <li>{listCountry.country[0].name}</li>
+                        <li>Capital city: {listCountry.country[0].capital}</li>
+                        <li>Region: {listCountry.country[0].region}</li>
+                        <li>Population: {listCountry.country[0].population}</li>
+                        <li>Area: {listCountry.country[0].area} km<sup>2</sup></li>
+                        <li>Time Zones: {listCountry.country[0].timezones}</li>
+                        <li>Currencies: AFN Afghan afghani</li>
+                        <li><img src={listCountry.country[0].flag}/></li>
+                    </ul>;
+                    this.setState({
+                        countryInfo : countryIInfo,
+                    });
+                }
+            })
         }
         render(){
             return (
                 <main>
                     <div className='wrapCountrySerch'>
+                        <label>Enter Country name:</label>
                         <input
                             type='text'
                             value={this.state.inputValue}
-                            placeholder="search..."
-                            onChange='this.handleCountryNameChange'
+                            placeholder='Ex: Afghanistan, Yemen, Italy'
+                            onChange={this.handleCountryNameChange}
                         />
                     </div>
                     <div className='countryInfo'>
-                        <ul>
-                            <li>Afghanistan</li>
-                            <li>Capital city: Kabul</li>
-                            <li>Region: Asia</li>
-                            <li>Area: 27657145</li>
-                            <li>Population: 652230</li>
-                            <li>Time Zones: "UTC+04:30"</li>
-                            <li>Currencies: AFN Afghan afghani</li>
-                            <li> <img src="https://restcountries.eu/data/afg.svg"/></li>
-                        </ul>
+                        {this.state.countryInfo}
                     </div>
                 </main>
             )
@@ -92,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function(){
     class App extends React.Component{
         render(){
             return(
-                <div className="wrap">
+                <div className='wrap'>
                     <Header/>
                     <Main/>
                     <Footer/>

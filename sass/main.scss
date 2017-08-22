@@ -1,16 +1,23 @@
+// font colors
+$color1 : #FFFFFF;
+$color2 : #F1F3CE;
+$color3 : #000000;
+// background-gradient
+$colorBg1 : #011A27;
+$colorBg2 : #063852;
+
 *{
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
     // font-family: 'Indie Flower', cursive;
-
 }
 body{
     height: 100%;
-    background: #2980b9;
-    background: -webkit-linear-gradient(bottom, #2980b9, #2c3e50);
-    background: -o-linear-gradient(bottom, #2980b9, #2c3e50);
-    background: linear-gradient(to top, #011A27, #063852);
+    background: $colorBg2;
+    background: -webkit-linear-gradient(bottom, $colorBg1, $colorBg2);
+    background: -o-linear-gradient(bottom, $colorBg1, $colorBg2);
+    background: linear-gradient(to top, $colorBg1, $colorBg2);
 }
 
 .wrap{
@@ -20,16 +27,17 @@ body{
 }
 
 header .headerLogo{
-    color: #FFF;
+    color: $color1;
     text-align: center;
     font-size: 50px;
     letter-spacing: 6px;
     padding: 30px;
-    text-shadow: 7px 7px 30px #000000;
+    text-shadow: 7px 7px 30px $color3;
 }
 
 main{
     text-align: center;
+    min-height: 558px;
 }
 .wrapCountrySerch{
     padding: 15px;
@@ -38,7 +46,14 @@ main{
         width: 350px;
         border: none;
         padding-left: 10px;
-        box-shadow: 8px 8px 8px #000;
+        box-shadow: 8px 8px 8px $color3;
+    }
+    label{
+        display: block;
+        color: $color2;
+        font-size: 18px;
+        padding-bottom: 8px;
+
     }
 
 }
@@ -49,13 +64,13 @@ main{
 
 .countryInfo ul {
     list-style-type: none;
-    color: #F1F3CE;
+    color: $color2;
      li {
         min-height: 30px;
         font-size: 17px;
-        text-shadow: 7px 7px 30px #000000;
+        text-shadow: 7px 7px 30px $color3;
         &:first-of-type {
-            color: #F1F3CE;
+            color: $color2;
             font-size: 30px;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -70,7 +85,7 @@ main{
 
 
 footer{
-    color: #FFFFFF;
+    color: $color1;
     line-height: 40px;
     text-align: center;
     text-decoration: underline;
